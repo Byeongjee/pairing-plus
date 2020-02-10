@@ -29,7 +29,7 @@ homepage = "https://github.com/algorand/pairing-plus"
 # original repo
 #   repository = "https://github.com/ebfull/pairing"
 # repo for this fork
-repository = "https://github.com/algorand/pairing-plus"
+repository = "https://github.com/Byeongjee/pairing-plus"
 
 [dependencies]
 rand = "0.4"
