@@ -144,6 +144,11 @@ impl fmt::Debug for G1Compressed {
     }
 }
 
+impl From<[u8; 48]> for G1Compressed {
+    fn from(data: [u8; 48]) -> Self {
+        G1Compressed(data)
+    }
+}
 impl EncodedPoint for G1Compressed {
     type Affine = G1Affine;
 

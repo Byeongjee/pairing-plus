@@ -163,6 +163,12 @@ impl fmt::Debug for G2Compressed {
     }
 }
 
+impl From<[u8; 96]> for G2Compressed {
+    fn from(data: [u8; 96]) -> Self {
+        G2Compressed(data)
+    }
+}
+
 impl EncodedPoint for G2Compressed {
     type Affine = G2Affine;
 
