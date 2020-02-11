@@ -1,7 +1,9 @@
 use super::super::{Bls12, Fq, Fq12, Fq2, FqRepr, Fr, FrRepr};
 use super::g1::G1Affine;
 use ff::{BitIterator, Field, PrimeField, PrimeFieldRepr, SqrtField};
+use std::cmp::Ordering;
 use std::fmt;
+
 use {CurveAffine, CurveProjective, EncodedPoint, Engine, GroupDecodingError, SubgroupCheck};
 
 curve_impl!(
@@ -166,6 +168,26 @@ impl fmt::Debug for G2Compressed {
 impl From<[u8; 96]> for G2Compressed {
     fn from(data: [u8; 96]) -> Self {
         G2Compressed(data)
+    }
+}
+
+impl PartialEq for G2Compressed {
+    fn eq(&self, other: &Self) -> bool {
+        self.0.as_ref() == other.0.as_ref()
+    }
+}
+
+impl Eq for G2Compressed {}
+
+impl PartialOrd for G2Compressed {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for G2Compressed {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.0.cmp(&other.0)
     }
 }
 
